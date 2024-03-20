@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using PlatformService.Models;
+using PlatformService.MODELS;
 
-namespace PlatformService.Data 
+namespace PlatformService.DATA 
 {
   public class AppDbContext: DbContext {
     public AppDbContext(DbContextOptions<AppDbContext> opt) : base (opt) 

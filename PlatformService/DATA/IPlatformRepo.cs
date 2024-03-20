@@ -1,6 +1,6 @@
-using PlatformService.Models;
+using PlatformService.MODELS;
 
-namespace PlatformService.Data 
+namespace PlatformService.DATA 
 {
   public interface IPlatformRepo 
   {
@@ -8,7 +8,5 @@ namespace PlatformService.Data
     IEnumerable<Platform> GetAllPlatforms();
     Platform GetPlatformById(int Id);
     void CreatePlatform(Platform plat);
-
-
   }
 }

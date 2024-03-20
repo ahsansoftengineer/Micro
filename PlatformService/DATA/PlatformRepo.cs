@@ -1,6 +1,6 @@
-using PlatformService.Models;
+using PlatformService.MODELS;
 
-namespace PlatformService.Data
+namespace PlatformService.DATA
 {
   public class PlatformRepo : IPlatformRepo
   {
@@ -25,7 +25,8 @@ namespace PlatformService.Data
       return _context.Platforms.ToList();
     }
 
-    public Platform GetPlatformById(int Id)
+    #pragma warning disable CS8766
+    public Platform? GetPlatformById(int Id)
     {
       return _context.Platforms.FirstOrDefault(p => p.Id == Id);
     }
