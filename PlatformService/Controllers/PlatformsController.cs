@@ -15,7 +15,10 @@ namespace PlatformService.Controllers
     private readonly IMapper _mapper;
     private readonly ILogger<PlatformController> _logger;
 
-    public PlatformController(IPlatformRepo repo, IMapper mapper, ILogger<PlatformController> logger)
+    public PlatformController(
+      IPlatformRepo repo, 
+      IMapper mapper, 
+      ILogger<PlatformController> logger)
     {
       _repo = repo;
       _mapper = mapper;
