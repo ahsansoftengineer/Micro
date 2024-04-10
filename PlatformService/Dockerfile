@@ -2,14 +2,15 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 as build-env
 WORKDIR /app
 
-COPY *.csprog ./
+# COPY *.csprog ./
+COPY . ./
 RUN dotnet restore
 
-COPY . ./
+# COPY . ./
 RUN dotnet publish -c Release -o out
 
 # BUILDING FUL RUN TIME VERSION
-FROM mcr.microsoft.com/dotnet/aspent:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 COPY --from=build-env /app/out .
