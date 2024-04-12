@@ -28,7 +28,6 @@ namespace PlatformService.Controllers
     public ActionResult<IEnumerable<PlatformReadDto>> GetPlatforms()
     {
       var list = _repo.GetAllPlatforms();
-      Console.WriteLine(list);
       return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(list));
     }
 
@@ -36,7 +35,6 @@ namespace PlatformService.Controllers
     public ActionResult<PlatformReadDto> GetPlatformById(int id)
     {
       var item = _repo.GetPlatformById(id);
-      Console.WriteLine(item);
       if (item != null)
       {
         return Ok(_mapper.Map<PlatformReadDto>(item));

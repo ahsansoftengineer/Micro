@@ -1,7 +1,7 @@
 
 ## What we'll Cover 
 ### INTRO & THEORY
-1. Tooling
+1. Tooling (VS Code) .Net5 Docker Destop, Docker Hub, Postman
 2. Solution Architecture
 3. Service Architecture
 
@@ -56,3 +56,25 @@
 5. Adding a gRPC Client to the Commands Service
 6. Deploy & Test
 
+### SOLUTION ARCH / EVENT ARCH
+- Event Arch is used in Microservices
+- Solution Arch for Microservice is Event Driven Arch
+### DATA DRIVEN ARCH / EVENT DRIVEN ARCH
+- A critical difference between the two is that in a data-driven architecture, the application state is determined by the data, and events are just a side effect of changes in data. In contrast, an event-driven architecture is more reactive, with the state being determined by the events.
+
+### APPLICATION VIRTUALIZATION
+- Application virtualization allows apps to comply with strict governance and privacy regulations such as the Health Insurance Portability and Accountability Act (HIPAA) and Payment Card Industry Data Security Standards (PCI DSS). This helps keep private information safe from any malware or attempts at compromise.
+
+### PCI DSS
+1. Install and maintain a firewall configuration to protect cardholder data
+2. Do not use vendor-supplied defaults for system passwords and other security parameters
+3. Protect stored cardholder data
+4. Encrypt transmission of cardholder data across open, public networks
+5. Use and regularly update anti-virus software or programs
+6. Develop and maintain secure systems and applications
+7. Restrict access to cardholder data by business need to know
+8. Assign a unique ID to each person with computer access
+9. Restrict physical access to cardholder data
+Track and monitor all access to network resources and cardholder data
+10. Regularly test security systems and processes
+11. Maintain a policy that addresses information security for all personnel

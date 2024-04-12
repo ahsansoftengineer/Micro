@@ -6,7 +6,8 @@ namespace PlatformService.DATA
   {
     public static void PrepPopulation(IApplicationBuilder app) 
     {
-      using(var serviceScope = app.ApplicationServices.CreateScope()){
+      using(var serviceScope = app.ApplicationServices.CreateScope())
+      {
         SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>());
       }
     }
@@ -32,6 +33,7 @@ namespace PlatformService.DATA
             Cost="Paid"
           }
         );
+        context.SaveChanges();
 
       } else {
         Console.WriteLine("--> We already have data");
