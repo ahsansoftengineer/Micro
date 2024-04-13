@@ -38,10 +38,22 @@ kubectl apply -f commands-depl.yaml
 kubectl delete deployments commands-depl
 ```
 
-#### NODE PORT
+#### PLATFORM NODE PORT
 ```bash
 kubectl apply -f platforms-np-srv.yaml
 kubectl get services
+```
+
+#### PERSISTENT VOLUME CLAIMS
+```bash
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"
+```
+
+#### MS SQL SERVICE + NODE PORT + LOAD BALANCER
+```bash
+kubectl apply -f mssql-plat-depl.yaml
+kubectl get deployments
+kubectl get service
 ```
 
 #### INGRESS NGINX
@@ -66,7 +78,3 @@ kubectl get services --namespace=ingress-nginx
 - Persistent Volume
 - Storage Class
 
-#### PERSISTENT VOLUME CLAIMS
-```bash
-kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"
-```

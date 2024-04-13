@@ -16,6 +16,13 @@ spec:
       containers:
       - name: platformservice
         image: ahsansoftengineer/platformservice:latest
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
 
 ---
 # CLUSTER IP FOR PLATFORM SERVICE
