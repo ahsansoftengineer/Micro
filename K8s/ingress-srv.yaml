@@ -9,7 +9,10 @@ metadata:
     name: ingress-srv
 spec:
   rules:
-  - host: acme.com
+  # UPDATE host file 127.0.0.1 ahsan.host.com
+  # Ubuntu -> /etc/host 
+  # Win -> C:/Windows/System32/drivers/etc/host
+  - host: ahsan.host.com 
     http:
       paths:
       - pathType: Prefix
@@ -25,4 +28,12 @@ spec:
           service:
             name: commands-clusterip-srv
             port:
+              number: 8080
+      # Additional Route for Swagger
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: platforms-clusterip-srv
+            port: 
               number: 8080
