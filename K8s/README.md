@@ -13,6 +13,8 @@ kubectl get pods
 kubectl get deployments
 kubectl get services
 kubectl get namespace
+kubectl get storageclass
+kubectl get pvc
 
 # HARD RESTART DEPLOYMENTS
 kubectl rollout restart deployments name-depl
@@ -56,4 +58,15 @@ kubectl get services --namespace=ingress-nginx
 # http://ahsan.host.com/swagger/index.html
 # http://ahsan.host.com/api/platforms
 # http://ahsan.host.com/api/c/platforms
+```
+
+
+#### KUBERNETES STORAGE CLASS
+- Persistent Volume Claims
+- Persistent Volume
+- Storage Class
+
+#### PERSISTENT VOLUME CLAIMS
+```bash
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"
 ```
