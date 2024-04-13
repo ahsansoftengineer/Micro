@@ -1,4 +1,5 @@
 ### KUBERNETES COMMANDS
+- Kubernetes always start deployments from Docker Hub
 
 #### KUBERNETES SETTINGS
 1. Enable the Kubernetes from Docker Destop Settings
@@ -10,12 +11,23 @@ kubectl version
 # Other Commands
 kubectl get pods
 kubectl get deployments
+kubectl get services
+kubectl get namespace
+
+# HARD RESTART DEPLOYMENTS
+kubectl rollout restart deployments name-depl
 ```
 
 #### PLATFORM SERVICE
 ```bash
 kubectl apply -f platforms-depl.yaml
 kubectl delete deployments platforms-depl
+kubectl rollout restart deployments platform-depl
+
+# INFO
+# deployment.apps/platforms-depl unchanged
+# service/platforms-clusterip-srv created
+# http://localhost:31971/api/platform
 ```
 
 #### COMMAND SERVICE
@@ -28,4 +40,16 @@ kubectl delete deployments commands-depl
 ```bash
 kubectl apply -f platforms-np-srv.yaml
 kubectl get services
+```
+
+#### INGRESS NGINX
+- Work as a Load Balancer & API Getway
+- This is Kubernetes Pod
+- It will run Seveleral Pods in Docker Desktop
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
+kubectl get namespace
+kubectl get pods --namespace=ingress-nginx
+kubectl get services --namespace=ingress-nginx
+# Routing file ingress-srv.yaml
 ```
