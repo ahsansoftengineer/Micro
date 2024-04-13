@@ -78,3 +78,12 @@ kubectl get services --namespace=ingress-nginx
 - Persistent Volume
 - Storage Class
 
+#### AZURE DATA STUDIO
+- Download Azure Data Studio
+```bash
+cd ~
+sudo dpkg -i ./Downloads/azuredatastudio-linux-1.48.0.deb
+azuredatastudio
+
+```
+
