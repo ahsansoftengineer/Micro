@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PlatformService.DATA;
+using PlatformService.SyncDataServices.Http;
 
 namespace PlatformService
 {
@@ -31,7 +32,7 @@ namespace PlatformService
 
             services.AddScoped<IPlatformRepo, PlatformRepo>();
 
-            // services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+            services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
             // services.AddSingleton<IMessageBusClient, MessageBusClient>();
             // services.AddGrpc();
             services.AddControllers();
@@ -40,6 +41,8 @@ namespace PlatformService
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlatformService", Version = "v1" });
             });
+            Console.WriteLine("--> CommadService " + Configuration["CommandService"]);
+            
         }
 
 
