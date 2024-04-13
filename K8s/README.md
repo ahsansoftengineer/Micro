@@ -52,4 +52,8 @@ kubectl get namespace
 kubectl get pods --namespace=ingress-nginx
 kubectl get services --namespace=ingress-nginx
 # Routing file ingress-srv.yaml
+# Test the Application on 
+# http://ahsan.host.com/swagger/index.html
+# http://ahsan.host.com/api/platforms
+# http://ahsan.host.com/api/c/platforms
 ```
