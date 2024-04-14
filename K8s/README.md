@@ -101,6 +101,7 @@ azuredatastudio
 # Azure Data Studio
 # Connection Type         : Microsfot SQL Server
 # Input Type              : Parameters
+# Server                  : localhost,1433
 # Authentication Type     : SQL Login
 # User Name               : sa
 # Password                : pa55w0rd!
