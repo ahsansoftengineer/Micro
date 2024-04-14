@@ -47,6 +47,9 @@ kubectl get services
 
 #### PERSISTENT VOLUME CLAIMS
 - When Ever you Change the Claims you have to update its name
+- And Update this in the Deployment File
+- mssql-plat-depl.yaml
+- local-pvc.yaml
 ```yaml
 metadata:
   name: mssql-claimss
