@@ -41,6 +41,7 @@ dotnet tool list -g
 dotnet tool install --global dotnet-ef
 export PATH="$PATH:$HOME/.dotnet/tools"
 
+dotnet build
 dotnet ef migrations add initialmigration
 
 docker build -t ahsansoftengineer/platformservice .
