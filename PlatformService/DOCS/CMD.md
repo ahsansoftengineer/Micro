@@ -42,6 +42,11 @@ dotnet tool install --global dotnet-ef
 export PATH="$PATH:$HOME/.dotnet/tools"
 
 dotnet ef migrations add initialmigration
+
+docker build -t ahsansoftengineer/platformservice .
+docker push ahsansoftengineer/platformservice
+kubectl get deployments
+kubectl rollout restart deployments platforms-depl
 ```
 - To Work the Migration you have to comment InMemo
 ```c#

@@ -23,7 +23,7 @@ namespace PlatformService
             {
                 Console.WriteLine("--> Using SQL DB");
                 services.AddDbContext<AppDbContext>(opt =>
-                    opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn")));
+                    opt.UseSqlServer(Configuration.GetConnectionString("PlatformConn")));
             }
             else
             {
