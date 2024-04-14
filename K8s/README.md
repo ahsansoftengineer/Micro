@@ -25,11 +25,6 @@ kubectl rollout restart deployments name-depl
 kubectl apply -f platforms-depl.yaml
 kubectl delete deployments platforms-depl
 kubectl rollout restart deployments platform-depl
-
-# INFO
-# deployment.apps/platforms-depl unchanged
-# service/platforms-clusterip-srv created
-# http://localhost:31971/api/platform
 ```
 
 #### COMMAND SERVICE
@@ -42,12 +37,19 @@ kubectl delete deployments commands-depl
 ```bash
 kubectl apply -f platforms-np-srv.yaml
 kubectl get services
+
+# ACCESS APPLICATION
+## OVER NODE PORT
+# deployment.apps/platforms-depl unchanged
+# service/platforms-clusterip-srv created
+# http://localhost:31971/api/platform
 ```
 
 #### PERSISTENT VOLUME CLAIMS
 ```bash
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!",
 kubectl apply -f local-pvc.yaml
+kubectl get pvc
 ```
 
 #### MS SQL SERVICE + NODE PORT + LOAD BALANCER
@@ -66,6 +68,9 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 kubectl get namespace
 kubectl get pods --namespace=ingress-nginx
 kubectl get services --namespace=ingress-nginx
+
+# ACCESS APPLICATION 
+## OVER INGRESS NGINX (DNS)
 # Routing file ingress-srv.yaml
 # Test the Application on 
 # http://ahsan.host.com/swagger/index.html
