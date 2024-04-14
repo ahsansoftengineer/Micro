@@ -46,6 +46,11 @@ kubectl get services
 ```
 
 #### PERSISTENT VOLUME CLAIMS
+- When Ever you Change the Claims you have to update its name
+```yaml
+metadata:
+  name: mssql-claimss
+```
 ```bash
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!",
 kubectl apply -f local-pvc.yaml
@@ -90,6 +95,14 @@ kubectl get services --namespace=ingress-nginx
 cd ~
 sudo dpkg -i ./Downloads/azuredatastudio-linux-1.48.0.deb
 azuredatastudio
-
+# Azure Data Studio
+# Connection Type         : Microsfot SQL Server
+# Input Type              : Parameters
+# Authentication Type     : SQL Login
+# User Name               : sa
+# Password                : pa55w0rd!
+# Encrypt                 : Mandatory
+# Trust Server Certifcate : True
+# Rest is Default
 ```
 

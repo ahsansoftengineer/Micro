@@ -40,7 +40,7 @@ spec:
       volumes:
       - name: mssqldb
         persistentVolumeClaim:
-          claimName: mssql-claims
+          claimName: mssql-claimss
 
 --- 
 # CLUSTER IP FOR MS SQL SERVICE
