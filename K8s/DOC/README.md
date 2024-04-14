@@ -19,8 +19,17 @@ kubectl get pvc
 # HARD RESTART DEPLOYMENTS
 kubectl rollout restart deployments name-depl
 ```
+#### POINTS
+- Cluster IPs using for Interservice comm
+- Every Pod has 1 Container
+- Every Container has 1 Application
+- Every Pod has Cluster Internal IP
+- Some Pod has Cluster External IP
+- DB Pod has Persisten Volume Claim
+
 
 #### PLATFORM SERVICE
+- API Service
 ```bash
 kubectl apply -f platforms-depl.yaml
 kubectl delete deployments platforms-depl
@@ -28,12 +37,14 @@ kubectl rollout restart deployments platform-depl
 ```
 
 #### COMMAND SERVICE
+- API Service talking via TCP
 ```bash
 kubectl apply -f commands-depl.yaml
 kubectl delete deployments commands-depl
 ```
 
 #### PLATFORM NODE PORT
+- External Port 
 ```bash
 kubectl apply -f platforms-np-srv.yaml
 kubectl get services
@@ -46,6 +57,7 @@ kubectl get services
 ```
 
 #### PERSISTENT VOLUME CLAIMS
+- To Keep Data Persistent even Application Stop
 - When Ever you Change the Claims you have to update its name
 - And Update this in the Deployment File
 - mssql-plat-depl.yaml
@@ -60,14 +72,18 @@ kubectl apply -f local-pvc.yaml
 kubectl get pvc
 ```
 
-#### MS SQL SERVICE + NODE PORT + LOAD BALANCER
+#### MS SQL SERVICE 
+- Database with load Balancer
 ```bash
 kubectl apply -f mssql-plat-depl.yaml
 kubectl get deployments
 kubectl get service
 ```
 
-#### INGRESS NGINX
+#### INGRESS NGINX (Pod, Container & Loadbalancer)
+- External Access of Servicies
+- - Platform Service
+- - Sql Database
 - Work as a Load Balancer & API Getway
 - This is Kubernetes Pod
 - It will run Seveleral Pods in Docker Desktop

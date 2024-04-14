@@ -1,4 +1,4 @@
-namespace CommandsService.Dtos
+namespace CommandsService.DTO
 {
     public class PlatformReadDto
     {
