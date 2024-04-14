@@ -17,13 +17,13 @@ spec:
         image: mcr.microsoft.com/mssql/server:2019-latest
         ports:
           - containerPort: 1433
-        resources:
-          limits:
-            memory: 512Mi
-            cpu: "1"
-          requests:
-            memory: 512Mi
-            cpu: "1"
+        # resources:
+        #   limits:
+        #     memory: 2Gi # 512Mi
+        #     cpu: "2"
+        #   requests:
+        #     memory: 2Gi # 512Mi
+        #     cpu: "2"
         env:
         - name: MSSQL_PID
           value: "Express"
@@ -40,7 +40,7 @@ spec:
       volumes:
       - name: mssqldb
         persistentVolumeClaim:
-          claimName: mssql-claim
+          claimName: mssql-claims
 
 --- 
 # CLUSTER IP FOR MS SQL SERVICE

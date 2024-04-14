@@ -46,7 +46,8 @@ kubectl get services
 
 #### PERSISTENT VOLUME CLAIMS
 ```bash
-kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!"
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!",
+kubectl apply -f local-pvc.yaml
 ```
 
 #### MS SQL SERVICE + NODE PORT + LOAD BALANCER
