@@ -23,3 +23,40 @@ docker container stop container_id
 docker container start container_id
 docker push ahsansoftnegineer/platformservice
 ```
+### MIGRATIONS
+```bash
+
+```
+### RUNNING PROJECT
+```bash
+dotnet run
+# http://localhost:5001/swagger/index.html
+# http://localhost:5001/api/platform
+```
+
+### MIGRATIONS
+```bash
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet tool list -g
+dotnet tool install --global dotnet-ef
+export PATH="$PATH:$HOME/.dotnet/tools"
+
+dotnet ef migrations add initialmigration
+```
+- To Work the Migration you have to comment InMemo
+```c#
+// if (_env.IsProduction())
+// {
+    Console.WriteLine("--> Using SQL DB");
+    services.AddDbContext<AppDbContext>(opt =>
+        opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn")));
+// }
+// else
+// {
+//     Console.WriteLine("--> Using InMem DB");
+//     services.AddDbContext<AppDbContext>(opt =>
+//          opt.UseInMemoryDatabase("InMem"));
+// }
+
+// PrepDb.PrepPopulation(app, env.IsProduction()); 
+```

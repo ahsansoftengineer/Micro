@@ -19,16 +19,18 @@ namespace PlatformService
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // if (_env.IsProduction())
-            // {
-            //     services.AddDbContext<AppDbContext>(opt =>
-            //         opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn")));
-            // }
-            // else
-            // {
+            if (_env.IsProduction())
+            {
+                Console.WriteLine("--> Using SQL DB");
+                services.AddDbContext<AppDbContext>(opt =>
+                    opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn")));
+            }
+            else
+            {
+                Console.WriteLine("--> Using InMem DB");
                 services.AddDbContext<AppDbContext>(opt =>
                      opt.UseInMemoryDatabase("InMem"));
-            // }
+            }
 
             services.AddScoped<IPlatformRepo, PlatformRepo>();
 
@@ -42,7 +44,7 @@ namespace PlatformService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlatformService", Version = "v1" });
             });
             Console.WriteLine("--> CommadService " + Configuration["CommandService"]);
-            
+
         }
 
 
@@ -50,9 +52,9 @@ namespace PlatformService
         {
             // if (env.IsDevelopment())
             // {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1"));
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1"));
             // }
 
             //app.UseHttpsRedirection();
@@ -60,7 +62,8 @@ namespace PlatformService
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseEndpoints(endpoints => {
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapControllers();
             });
 
@@ -74,10 +77,7 @@ namespace PlatformService
             //         await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
             //     });
             // });
-
-
-            PrepDb.PrepPopulation(app); // , env.IsProduction()
-
+            PrepDb.PrepPopulation(app, env.IsProduction());
         }
     }
 }
