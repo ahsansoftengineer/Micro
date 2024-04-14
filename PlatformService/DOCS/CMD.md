@@ -46,7 +46,10 @@ dotnet ef migrations add initialmigration
 
 docker build -t ahsansoftengineer/platformservice .
 docker push ahsansoftengineer/platformservice
+
 kubectl get deployments
+# kubectl delete deployments platforms-depl
+# kubectl apply -f platforms-depl.yaml
 kubectl rollout restart deployments platforms-depl
 ```
 - To Work the Migration you have to comment InMemo
