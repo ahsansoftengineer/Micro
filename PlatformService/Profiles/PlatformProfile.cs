@@ -1,5 +1,5 @@
 using AutoMapper;
-using PlatformService.Dtos;
+using PlatformService.DTO;
 using PlatformService.MODELS;
 
 namespace PlatformService.Profiles
@@ -10,6 +10,7 @@ namespace PlatformService.Profiles
     {
       CreateMap<Platform, PlatformReadDto>();
       CreateMap<PlatformCreateDto, Platform>();
+      CreateMap<PlatformReadDto, PlatformPublishedDto>();
     }
   }
 }

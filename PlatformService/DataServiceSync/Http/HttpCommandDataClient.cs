@@ -3,9 +3,9 @@ using System.Net.Http.Headers;
 // using Microsoft.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using PlatformService.Dtos;
+using PlatformService.DTO;
 
-namespace PlatformService.SyncDataServices.Http
+namespace PlatformService.DataServiceSyncs.Http
 {
   public class HttpCommandDataClient : ICommandDataClient
   {

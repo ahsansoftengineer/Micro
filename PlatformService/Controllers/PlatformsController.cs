@@ -2,9 +2,9 @@ using System.Collections;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PlatformService.DATA;
-using PlatformService.Dtos;
+using PlatformService.DTO;
 using PlatformService.MODELS;
-using PlatformService.SyncDataServices.Http;
+using PlatformService.DataServiceSyncs.Http;
 
 namespace PlatformService.Controllers
 {

@@ -107,9 +107,13 @@ kubectl delete services srv-ingress
 #### MSG BRKR RABBIT MQ
 ```bash
 kubectl apply -f depl-rabbitmq.yaml
-http://localhost:15672/
+# http://localhost:15672/
 # username: guest
 # password: guest
+
+## APPLICATION ENV
+# "RabbitMQHost": "srv-clusterip-rabbitmq",
+# "RabbitMQPort": "5672"
 ```
 
 

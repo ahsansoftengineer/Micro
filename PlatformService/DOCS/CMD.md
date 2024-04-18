@@ -69,3 +69,9 @@ kubectl rollout restart deployments depl-platforms
 
 // PrepDb.PrepPopulation(app, env.IsProduction()); 
 ```
+
+### RABBIT MQ 
+```bash
+dotnet add package Microsoft.RabbitMQ.Client
+
+```
