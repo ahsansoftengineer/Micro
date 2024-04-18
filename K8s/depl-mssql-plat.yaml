@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mssql-depl
+  name: depl-mssql
 spec:
   replicas: 1
   selector:
@@ -40,14 +40,14 @@ spec:
       volumes:
       - name: mssqldb
         persistentVolumeClaim:
-          claimName: mssql-claimss
+          claimName: claimss-mssql
 
 --- 
 # CLUSTER IP FOR MS SQL SERVICE
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-clusterip-srv
+  name: srv-mssql-clusterip
 spec:
   type: ClusterIP
   selector:
@@ -63,7 +63,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-loadbalancer
+  name: loadbalancer-mssql
 spec:
   type: LoadBalancer
   selector:

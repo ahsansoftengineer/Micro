@@ -52,7 +52,7 @@ kubectl get services
 # ACCESS APPLICATION
 ## OVER NODE PORT
 # deployment.apps/depl-platforms unchanged
-# service/platforms-clusterip-srv created
+# service/srv-clusterip-platforms created
 # http://localhost:31971/api/platform
 ```
 
@@ -64,7 +64,7 @@ kubectl get services
 - pvc-local.yaml
 ```yaml
 metadata:
-  name: mssql-claimss
+  name: claimss-mssql
 ```
 ```bash
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!",
@@ -95,7 +95,7 @@ kubectl get services --namespace=ingress-nginx
 
 # ACCESS APPLICATION 
 ## OVER INGRESS NGINX (DNS)
-# Routing file ingress-srv.yaml
+# Routing file srv-ingress.yaml
 # Test the Application on 
 # http://ahsan.host.com/swagger/index.html
 # http://ahsan.host.com/api/platforms

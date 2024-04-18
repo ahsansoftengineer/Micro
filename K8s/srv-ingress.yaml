@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-srv
+  name: srv-ingress
   annotations: 
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true' 
   labels:
-    name: ingress-srv
+    name: srv-ingress
 spec:
   rules:
   # UPDATE host file 127.0.0.1 ahsan.host.com
@@ -19,14 +19,14 @@ spec:
         path: /api/platforms
         backend:
           service:
-            name: platforms-clusterip-srv
+            name: srv-clusterip-platforms
             port: 
               number: 8080
       - pathType: Prefix
         path: /api/c/platforms
         backend:
           service:
-            name: commands-clusterip-srv
+            name: srv-clusterip-commands
             port:
               number: 8080
       # Additional Route for Swagger
@@ -34,6 +34,6 @@ spec:
         path: /
         backend:
           service:
-            name: platforms-clusterip-srv
+            name: srv-clusterip-platforms
             port: 
               number: 8080

@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rabbitmq-clusterip-srv
+  name: srv-clusterip-rabbitmq
 spec:
   type: ClusterIP
   selector:
@@ -42,7 +42,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rabbitmq-loadbalancer
+  name: loadbalancer-rabbitmq
 spec:
   type: LoadBalancer
   selector:
