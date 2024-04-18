@@ -101,8 +101,24 @@ kubectl get services --namespace=ingress-nginx
 # http://ahsan.host.com/api/platforms
 # http://ahsan.host.com/api/c/platforms
 ```
+#### MSG BRKR RABBIT MQ
+```bash
+kubectl apply -f depl-rabbitmq.yaml
+```
 
 
+#### NOTE 
+- When Changing Naming Convention do change cluster ips in the application where it used
+```json
+{
+  "CommandService" : "http://srv-clusterip-commands:8082/api/c/platforms",
+  "ConnectionStrings": {
+    "PlatformConn" : "Server=srv-clusterip-mssql,1433;Initial Catalog=platformsdb;User ID=sa;Password=pa55w0rd!;;TrustServerCertificate=true"
+  }
+}
+
+
+```
 #### KUBERNETES STORAGE CLASS
 - Persistent Volume Claims
 - Persistent Volume
