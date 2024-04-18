@@ -110,6 +110,7 @@ kubectl delete services srv-ingress
 ```bash
 kubectl apply -f depl-rabbitmq.yaml
 # http://localhost:15672/
+# http://ahsan.host.com:15672/#/exchanges
 # username: guest
 # password: guest
 
