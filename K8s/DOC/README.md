@@ -77,7 +77,7 @@ kubectl get pvc
 ```bash
 kubectl apply -f depl-mssql-plat.yaml
 kubectl get deployments
-kubectl get service
+kubectl get services
 ```
 
 #### INGRESS NGINX (Pod, Container & Loadbalancer)
