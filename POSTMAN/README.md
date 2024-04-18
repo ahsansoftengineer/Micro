@@ -21,15 +21,15 @@ docker push ahsansoftnegineer/platformservice
 ### K8s
 - In Case of K8s Both the Files needs to be run at the same time
 ```bash
-# PLATFORM-DEPL.YAML
-kubectl apply -f platforms-depl.yaml
+# DEPL-PLATFORM.YAML
+kubectl apply -f depl-platforms.yaml
 kubectl get pods
 kubectl get deployments
 kubectl delete deployments plastforms-depl
 
 
-# NODE PORT (PLATFORMS-NP-SRV.YAML)
-kubectl apply -f platforms-np-srv.yaml
+# NODE PORT (SRV-NP-PLATFORMS.YAML)
+kubectl apply -f srv-np-platforms.yaml
 kubectl get services
 
 # http://localhost:31971/api/platform

@@ -31,27 +31,27 @@ kubectl rollout restart deployments name-depl
 #### PLATFORM SERVICE
 - API Service
 ```bash
-kubectl apply -f platforms-depl.yaml
-kubectl delete deployments platforms-depl
+kubectl apply -f depl-platforms.yaml
+kubectl delete deployments depl-platforms
 kubectl rollout restart deployments platform-depl
 ```
 
 #### COMMAND SERVICE
 - API Service talking via TCP
 ```bash
-kubectl apply -f commands-depl.yaml
-kubectl delete deployments commands-depl
+kubectl apply -f depl-commands.yaml
+kubectl delete deployments depl-commands
 ```
 
 #### PLATFORM NODE PORT
 - External Port 
 ```bash
-kubectl apply -f platforms-np-srv.yaml
+kubectl apply -f srv-np-platforms.yaml
 kubectl get services
 
 # ACCESS APPLICATION
 ## OVER NODE PORT
-# deployment.apps/platforms-depl unchanged
+# deployment.apps/depl-platforms unchanged
 # service/platforms-clusterip-srv created
 # http://localhost:31971/api/platform
 ```
@@ -60,22 +60,22 @@ kubectl get services
 - To Keep Data Persistent even Application Stop
 - When Ever you Change the Claims you have to update its name
 - And Update this in the Deployment File
-- mssql-plat-depl.yaml
-- local-pvc.yaml
+- depl-mssql-plat.yaml
+- pvc-local.yaml
 ```yaml
 metadata:
   name: mssql-claimss
 ```
 ```bash
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55w0rd!",
-kubectl apply -f local-pvc.yaml
+kubectl apply -f pvc-local.yaml
 kubectl get pvc
 ```
 
 #### MS SQL SERVICE 
 - Database with load Balancer
 ```bash
-kubectl apply -f mssql-plat-depl.yaml
+kubectl apply -f depl-mssql-plat.yaml
 kubectl get deployments
 kubectl get service
 ```
