@@ -26,8 +26,7 @@ namespace CommandsService.EventProcessing
       switch (eventType)
       {
         case EventType.PlatformPublished:
-          // Todo
-          addPlatform(message);
+          AddPlatform(message);
           break;
         default:
           break;
@@ -49,7 +48,7 @@ namespace CommandsService.EventProcessing
       }
    
     }
-    private void addPlatform(string platformPublishedMessage)
+    private void AddPlatform(string platformPublishedMessage)
     {
       using(var scope = _scopeFactory.CreateScope())
       {
@@ -64,6 +63,7 @@ namespace CommandsService.EventProcessing
           {
             repo.CreatePlatform(plat);
             repo.SaveChanges(); 
+            Console.WriteLine("--> Platform Added");
           }
           else 
           {
@@ -73,7 +73,6 @@ namespace CommandsService.EventProcessing
         catch(Exception ex)
         {
           Console.WriteLine($"--> Could not add Platform to DB {ex.Message}");
-
         }
       }
     }

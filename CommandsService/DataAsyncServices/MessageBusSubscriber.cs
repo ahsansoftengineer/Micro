@@ -11,9 +11,9 @@ namespace CommandsService.AsyncDataServices
   {
     private readonly IConfiguration _config;
     private readonly IEventProcessor _eventProcessor;
-    private IConnection _con;
-    private IModel _channel;
-    private string _queueName;
+    private IConnection? _con;
+    private IModel? _channel;
+    private string? _queueName;
 
     public MessageBusSubscriber(
       IConfiguration config,
@@ -92,7 +92,7 @@ namespace CommandsService.AsyncDataServices
     }
     public override void Dispose()
     {
-      if (_channel.IsOpen)
+      if (_channel != null && _con != null && _channel.IsOpen)
       {
         _channel.Close();
         _con.Close();
