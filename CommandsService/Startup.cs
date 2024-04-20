@@ -1,60 +1,63 @@
 using CommandsService.AsyncDataServices;
 using CommandsService.DATA;
 using CommandsService.EventProcessing;
+using CommandsService.MODELS;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
-namespace CommandsService
+namespace CommandsService;
+public class Startup
 {
-    public class Startup
+    public IConfiguration _config { get; }
+    private readonly IWebHostEnvironment _env;
+
+    public Startup(IConfiguration config, IWebHostEnvironment env)
     {
-        public IConfiguration Configuration { get; }
-        private readonly IWebHostEnvironment _env;
+        _config = config;
+        _env = env;
+    }
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMemo"));
+        services.AddScoped<ICommandRepo, CommandRepo>();
+
+        services.AddControllers();
+
+        // services.AddHostedService<MessageBusSubscriber>();
+        services.AddSingleton<IEventProcessor, EventProcessor>();
+
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        // services.AddScoped<IPlatformDataClient, PlatformDataClient>();
+        services.AddSwaggerGen(c =>
         {
-            Configuration = configuration;
-            _env = env;
-        }
-
-
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMemo"));
-            services.AddScoped<ICommandRepo, CommandRepo>();
-            
-            services.AddControllers();
-            services.AddHostedService<MessageBusSubscriber>();
-            services.AddSingleton<IEventProcessor, EventProcessor>();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddSwaggerGen(c =>
+            c.SwaggerDoc("v1", new OpenApiInfo
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { 
-                    Title = "PlatformService", 
-                    Version = "v1" 
-                });
+                Title = "PlatformService",
+                Version = "v1"
             });
-        }
+        });
+    }
 
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CommandsService v1"));
-            }
-
-            //app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CommandsService v1"));
         }
+
+        //app.UseHttpsRedirection();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
     }
 }
