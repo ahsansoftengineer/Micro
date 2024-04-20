@@ -5,8 +5,8 @@ namespace CommandsService.DTO
   public class CommandCreateDto
   {
     [Required]
-    public string HowTo { get; set; }
+    public required string HowTo { get; set; }
     [Required]
-    public string CommandLine { get; set; }
+    public required string CommandLine { get; set; }
   }
 }
