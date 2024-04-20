@@ -1,3 +1,4 @@
+using CommandsService.AsyncDataServices;
 using CommandsService.DATA;
 using CommandsService.EventProcessing;
 using Microsoft.EntityFrameworkCore;
@@ -23,11 +24,15 @@ namespace CommandsService
             services.AddScoped<ICommandRepo, CommandRepo>();
             
             services.AddControllers();
+            services.AddHostedService<MessageBusSubscriber>();
             services.AddSingleton<IEventProcessor, EventProcessor>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlatformService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "PlatformService", 
+                    Version = "v1" 
+                });
             });
         }
 
