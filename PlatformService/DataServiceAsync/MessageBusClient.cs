@@ -24,9 +24,15 @@ namespace PlatformService.DataServiceAsync
         _conn = factory.CreateConnection();
         _channel = _conn.CreateModel();
 
-        _channel.ExchangeDeclare(exchange: "trigger", type: ExchangeType.Fanout);
+        _channel.ExchangeDeclare(
+          exchange: "trigger",
+          type: ExchangeType.Fanout
+        );
 
-        _conn.ConnectionShutdown += RabbitMQ_ConnectionShutdown;
+        _conn.ConnectionShutdown += (sender, e) =>
+        {
+          Console.WriteLine($"-- RabbitMQ Connection Shutdown");
+        };
         Console.WriteLine("--> Connected to MessageBus");
 
       }
@@ -70,11 +76,5 @@ namespace PlatformService.DataServiceAsync
         _conn.Close();
       }
     }
-
-    public void RabbitMQ_ConnectionShutdown(object sender, ShutdownEventArgs e)
-    {
-      Console.WriteLine($"-- RabbitMQ Connection Shutdown");
-    }
-
   }
 }
