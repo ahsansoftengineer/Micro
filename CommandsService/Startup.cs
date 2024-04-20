@@ -25,7 +25,7 @@ public class Startup
 
         services.AddControllers();
 
-        // services.AddHostedService<MessageBusSubscriber>();
+        services.AddHostedService<MessageBusSubscriber>();
         services.AddSingleton<IEventProcessor, EventProcessor>();
 
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
