@@ -29,7 +29,7 @@ namespace PlatformService.DataServiceSyncs.Http
       var response = await _httpClient.PostAsync(ep, httpContent);
       if (response.IsSuccessStatusCode)
       {
-        Console.WriteLine("--> Sync POST to CommandService wasw OK!");
+        Console.WriteLine("--> Sync HTTP POST to CommandService was OK!");
       }
       else
       {
