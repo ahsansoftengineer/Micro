@@ -15,20 +15,21 @@ spec:
   - host: ahsan.host.com 
     http:
       paths:
-      # - pathType: Prefix
-      #   path: /api/platform
-      #   backend:
-      #     service:
-      #       name: srv-clusterip-platforms
-      #       port: 
-      #         number: 8080
-      # - pathType: Prefix
-      #   path: /api/c/platforms
-      #   backend:
-      #     service:
-      #       name: srv-clusterip-commands
-      #       port:
-      #         number: 8080
+      - pathType: Prefix
+        path: /api/platform
+        backend:
+          service:
+            name: srv-clusterip-platforms
+            port: 
+              number: 8080
+              
+      - pathType: Prefix
+        path: /api/c/platforms
+        backend:
+          service:
+            name: srv-clusterip-commands
+            port:
+              number: 8080
 
       - pathType: Prefix
         path: /
