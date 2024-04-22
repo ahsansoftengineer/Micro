@@ -13,7 +13,7 @@ namespace CommandsService.MODELS
     public required string CommandLine { get; set; }
     [Required]
     public int PlatformId { get; set; }
-    public  Platform Platform { get; set; }
+    public required  Platform Platform { get; set; }
 
   }
 }

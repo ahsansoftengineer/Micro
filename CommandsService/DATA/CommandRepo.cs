@@ -44,7 +44,7 @@ namespace CommandsService.DATA
         .OrderBy(c => c.Platform.Name);
     }
 
-    public Command GetCommand(int platformId, int commandId)
+    public Command? GetCommand(int platformId, int commandId)
     {
       return  _cntxt.Commands
       .Where(c => c.PlatformId == platformId)

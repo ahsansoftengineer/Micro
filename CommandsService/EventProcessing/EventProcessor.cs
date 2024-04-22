@@ -37,15 +37,20 @@ namespace CommandsService.EventProcessing
       var eventType = JsonSerializer.Deserialize<GenericEventDto>(notification);
       
       // Declare in Platform Service
-      switch (eventType.Event)
-      {
-        case "Platform_Published":
-          Console.WriteLine("--> Platform Publised Event Detected");
-          return EventType.PlatformPublished;
-        default:
-          Console.WriteLine("--> Could not determine the event type");
-          return EventType.Undetermined;
+      if(eventType != null) {
+        switch (eventType.Event)
+        {
+          case "Platform_Published":
+            Console.WriteLine("--> Platform Publised Event Detected");
+            return EventType.PlatformPublished;
+          default:
+            Console.WriteLine("--> Could not determine the event type");
+            return EventType.Undetermined;
+        }
+      } else {
+        return EventType.Undetermined;
       }
+
    
     }
     private void AddPlatform(string platformPublishedMessage)
