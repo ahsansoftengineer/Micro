@@ -13,17 +13,19 @@ namespace PlatformService.DATA
       }
     }
 
-    private static void SeedData(AppDbContext context, bool isProd) {
+    private static void SeedData(AppDbContext? context, bool isProd) {
       if(isProd)
       {
         Console.WriteLine("--> Attempting to apply Migrations...");
         try {
-          context.Database.Migrate();
+          if(context != null){
+            context.Database.Migrate();
+          }
         } catch(Exception ex) {
           Console.WriteLine(ex.Message);
         }
       }
-      if(!context.Platforms.Any()){
+      if(context != null && !context.Platforms.Any()){
         Console.WriteLine("--> Seeding Data");
 
         context.Platforms.AddRange(

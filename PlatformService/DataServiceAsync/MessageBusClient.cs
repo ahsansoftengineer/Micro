@@ -19,10 +19,10 @@ namespace PlatformService.DataServiceAsync
         HostName = _config["RabbitMQHost"],
         Port = Convert.ToInt32(_config["RabbitMQPort"]),
       };
+      _conn = factory.CreateConnection();
+      _channel = _conn.CreateModel();
       try
       {
-        _conn = factory.CreateConnection();
-        _channel = _conn.CreateModel();
 
         _channel.ExchangeDeclare(
           exchange: "trigger",
