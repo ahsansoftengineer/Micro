@@ -49,8 +49,8 @@ public class Startup
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
+                // c.RoutePrefix = "swagger/command";
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "CommandsService v1");
-                c.RoutePrefix = "/swagger/command";
             });
         }
 

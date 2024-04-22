@@ -31,7 +31,7 @@ kubectl rollout restart deployments name-depl
 #### PLATFORM SERVICE
 - API Service
 ```bash
-docker build -t ahsansoftengineer/platformservice ./PlatformService
+docker build -t ahsansoftengineer/platformservice ../PlatformService
 docker push ahsansoftengineer/platformservice
 kubectl delete deployments depl-platforms
 kubectl apply -f depl-platforms.yaml
@@ -41,7 +41,7 @@ kubectl rollout restart deployments depl-platforms
 #### COMMAND SERVICE
 - API Service talking via TCP
 ```bash
-docker build -t ahsansoftengineer/commandservice ./CommandsService
+docker build -t ahsansoftengineer/commandservice ../CommandsService
 docker push ahsansoftengineer/commandservice
 kubectl delete deployments depl-commands
 kubectl apply -f depl-commands.yaml
@@ -100,8 +100,8 @@ kubectl delete namespace ingress-nginx
 kubectl get pods --namespace=ingress-nginx
 kubectl get services --namespace=ingress-nginx
 
-kubectl apply -f srv-ingress.yaml
 kubectl delete ingress srv-ingress
+kubectl apply -f srv-ingress.yaml
 # ACCESS APPLICATION 
 ## OVER INGRESS NGINX (DNS)
 # Routing file srv-ingress.yaml

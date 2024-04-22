@@ -30,17 +30,17 @@ spec:
             port:
               number: 8080
       - pathType: Prefix
-        path: /swagger/platform/index.html
+        path: /swagger/platform
         backend:
           service:
             name: srv-clusterip-platforms
             port: 
-              number: 8080
+              number: 8080 
       - pathType: Prefix
-        path: /swagger/command/index.html
+        path: /
         backend:
           service:
-            name: srv-clusterip-commands
+            name: srv-clusterip-platforms
             port: 
               number: 8080 
       

@@ -53,13 +53,14 @@ namespace PlatformService
         {
             // if (env.IsDevelopment())
             // {
-            app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1");
-                c.RoutePrefix = "/swagger/platform";
-            });
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger(c=> {
+                });
+                app.UseSwaggerUI(c =>
+                {
+                    // c.RoutePrefix = "swagger/platform";
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1");
+                });
             // }
 
             //app.UseHttpsRedirection();
