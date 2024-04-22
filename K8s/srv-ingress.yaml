@@ -35,7 +35,7 @@ spec:
         path: /
         backend:
           service:
-            name: srv-clusterip-commands
+            name: srv-clusterip-platforms
             port: 
               number: 8080
       # Additional Route for Swagger

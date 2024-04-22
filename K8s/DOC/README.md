@@ -35,7 +35,7 @@ docker build -t ahsansoftengineer/platformservice ./PlatformService
 docker push ahsansoftengineer/platformservice
 kubectl delete deployments depl-platforms
 kubectl apply -f depl-platforms.yaml
-kubectl rollout restart deployments depl-platform
+kubectl rollout restart deployments depl-platforms
 ```
 
 #### COMMAND SERVICE
@@ -45,12 +45,14 @@ docker build -t ahsansoftengineer/commandservice ./CommandsService
 docker push ahsansoftengineer/commandservice
 kubectl delete deployments depl-commands
 kubectl apply -f depl-commands.yaml
+kubectl rollout restart deployments depl-commands
 ```
 
 #### PLATFORM NODE PORT
 - External Port 
 ```bash
 kubectl apply -f srv-np-platforms.yaml
+kubectl delete services srv-np-platforms
 kubectl get services
 
 # ACCESS APPLICATION

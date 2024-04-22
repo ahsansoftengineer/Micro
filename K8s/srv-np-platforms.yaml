@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-platformnpservice
+  name: srv-np-platforms
 spec:
   type: NodePort
   selector:
@@ -10,5 +10,5 @@ spec:
   ports:
   - name: platformservice
     protocol: TCP
-    port: 8082
+    port: 8080
     targetPort: 8080
