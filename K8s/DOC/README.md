@@ -155,3 +155,40 @@ azuredatastudio
 # Rest is Default
 ```
 
+#### SSH KUBERNATES CONTAINER
+
+```bash
+# Kubernates Pods are not Virtual Machines
+# SSH Pods
+kubectl get pods
+kubectl exec -it <pod-name> -- /bin/sh # Example
+kubectl exec -it depl-commands-d4bff94dd-cwlrg -- /bin/sh # Tested 
+
+# GET Pods inside NameSpace
+kubectl get pods --namespace=ingress-nginx
+
+# GET Services inside NameSpace
+kubectl get services --namespace=ingress-nginx 
+
+# GET Containers inside Pods
+kubectl get pods depl-commands-d4bff94dd-cwlrg -o jsonpath='{.spec.containers[*].name}'
+
+# SSH Pods inside NameSpace
+kubectl get pods --namespace=ingress-nginx
+kubectl exec -it -n <name space here> <pod-name> -- /bin/sh # Example
+kubectl exec -it -n ingress-nginx ingress-nginx-controller-7dcdbcff84-6dr2r -- /bin/sh # Tested
+
+
+# SSH Container Inside Pod & NameSpace
+# 1 Get Pods inside NameSpace
+kubectl get pods --namespace=ingress-nginx 
+# 2 GET Container Inside Pod & NameSpace
+kubectl get pods ingress-nginx-controller-7dcdbcff84-6dr2r --namespace=ingress-nginx -o jsonpath='{.spec.containers[*].name}'
+# 3 SSH Container Inside Pod & NameSpace
+kubectl exec -it -n <NAMESPACE> <POD_NAME> --container <CONTAINER_NAME> -- /bin/bash # Example
+kubectl exec -it -n ingress-nginx ingress-nginx-controller-7dcdbcff84-6dr2r --container controller -- /bin/bash # Tested
+
+
+
+```
+
