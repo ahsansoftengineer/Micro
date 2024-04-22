@@ -36,13 +36,13 @@ spec:
             name: srv-clusterip-platforms
             port: 
               number: 8080 
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: srv-clusterip-platforms
-            port: 
-              number: 8080 
+      # - pathType: Prefix
+      #   path: /
+      #   backend:
+      #     service:
+      #       name: srv-clusterip-platforms
+      #       port: 
+      #         number: 8080 
       
       # Additional Route for Swagger
       # - pathType: Prefix
