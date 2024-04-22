@@ -32,8 +32,9 @@ kubectl rollout restart deployments name-depl
 - API Service
 ```bash
 docker build -t ahsansoftengineer/platformservice ./PlatformService
-kubectl apply -f depl-platforms.yaml
+docker push ahsansoftengineer/platformservice
 kubectl delete deployments depl-platforms
+kubectl apply -f depl-platforms.yaml
 kubectl rollout restart deployments depl-platform
 ```
 
@@ -41,8 +42,9 @@ kubectl rollout restart deployments depl-platform
 - API Service talking via TCP
 ```bash
 docker build -t ahsansoftengineer/commandservice ./CommandsService
-kubectl apply -f depl-commands.yaml
+docker push ahsansoftengineer/commandservice
 kubectl delete deployments depl-commands
+kubectl apply -f depl-commands.yaml
 ```
 
 #### PLATFORM NODE PORT

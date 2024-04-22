@@ -1,4 +1,3 @@
-using System.Collections;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PlatformService.DATA;

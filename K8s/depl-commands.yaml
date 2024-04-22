@@ -35,8 +35,12 @@ spec:
   ports:
   - name: commandservice
     protocol: TCP
-    port : 8082
+    port: 8080
     targetPort: 8080
+  # - name: plafromgrpc
+  #   protocol: TCP
+  #   port: 666
+  #   targetPort: 666
 
 
 

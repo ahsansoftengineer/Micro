@@ -24,7 +24,7 @@ namespace CommandsService.Controllers
     public ActionResult<IEnumerable<PlatformReadDto>> GetPlatform() 
     {
       Console.WriteLine("--> Getting Platforms from Commands");
-
+      // return Ok("Hello");
       var platformItems = _repo.GetAllPlatforms();
       return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platformItems));
     }

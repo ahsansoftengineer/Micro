@@ -1,7 +1,6 @@
 using CommandsService.AsyncDataServices;
 using CommandsService.DATA;
 using CommandsService.EventProcessing;
-using CommandsService.MODELS;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
