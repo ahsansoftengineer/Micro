@@ -97,7 +97,7 @@ kubectl get pods --namespace=ingress-nginx
 kubectl get services --namespace=ingress-nginx
 
 kubectl apply -f srv-ingress.yaml
-kubectl delete services srv-ingress
+kubectl delete ingress srv-ingress
 # ACCESS APPLICATION 
 ## OVER INGRESS NGINX (DNS)
 # Routing file srv-ingress.yaml
