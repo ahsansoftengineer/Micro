@@ -76,7 +76,7 @@ kubectl get services
 ### DNS ROUTES
 #### PLATFORM SERVICE
 [GET PLATFORM](http://ahsan.host.com/api/platform)
-[POST PLATFORM](http://ahsan.host.com/api/platform)
+[POST PLATFORM](http://ahsan.host.com/api/platform?)
 [GET SWAGGER](http://ahsan.host.com/swagger/index.html)
 
 #### COMMAND SERVICE
