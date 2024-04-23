@@ -50,16 +50,30 @@ kubectl delete deployments plastforms-depl
 kubectl apply -f srv-np-platforms.yaml
 kubectl get services
 
-# http://localhost:31971/api/platform
-# http://localhost:31971/swagger/index.html
-
-# DNS PORT
-# http://ahsan.host.com/api/platform
-# http://ahsan.host.com/api/c/platform
-# http://ahsan.host.com/swagger/index.html
 ```
 
-### OTHER ROUTES WITH HOST
+### LOCAL HOST ROUTES
+#### PLATFORM SERVICE
+[GET SWAGGER](http://localhost:5001/swagger/index.html)
+[GET PLATFORM](http://localhost:5001/api/platform)
+
+#### COMMAND SERVICE
+[GET SWAGGER](http://localhost:6001/swagger/index.html)
+[GET PLATFORMS](http://localhost:6001/api/c/platforms)
+
+### NODE PORT ROUTES
+#### PLATFORM SERVICE
+[GET PLATFORM](http://localhost:31971/api/platform)
+[POST PLATFORM](http://localhost:31971/api/platform)
+[GET SWAGGER](http://localhost:31971/swagger/index.html)
+
+#### COMMAND SERVICE
+[GET PLATFORMS](http://localhost:31971/api/c/platforms)
+[POST PLATFORMS/10/COMMANDS](https://localhost:31971/api/c/platforms/10/commands?howTo="asdf"&commandLine="CommandLine")
+[GET PLATFORMS/10/COMMANDS](https://localhost:31971/api/c/platforms/10/commands)
+[GET PLATFORMS/10/COMMANDS/7](https://localhost:31971/api/c/platforms/10/commands/7)
+
+### DNS ROUTES
 #### PLATFORM SERVICE
 [GET PLATFORM](http://ahsan.host.com/api/platform)
 [POST PLATFORM](http://ahsan.host.com/api/platform)
