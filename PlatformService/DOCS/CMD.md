@@ -10,6 +10,13 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.InMemory
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet run
+dotnet add package Microsoft.RabbitMQ.Client
+# GRPC PACKAGES
+dotnet add package Grpc.AspNetCore
+dotnet add package Grpc.Tools
+dotnet add package Grpc.Net.Client
+dotnet add package Google.Protobuf
+
 ```
 
 ### DOTNET CORE DOCKER
@@ -72,6 +79,6 @@ kubectl rollout restart deployments depl-platforms
 
 ### RABBIT MQ 
 ```bash
-dotnet add package Microsoft.RabbitMQ.Client
+
 
 ```

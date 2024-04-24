@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using PlatformService.DATA;
 using PlatformService.DataServiceAsync;
 using PlatformService.DataServiceSyncs.Http;
+using PlatformService.SyncDataServices.Grpc;
 
 namespace PlatformService
 {
@@ -35,6 +36,7 @@ namespace PlatformService
 
             services.AddScoped<IPlatformRepo, PlatformRepo>();
             services.AddSingleton<IMessageBusClient, MessageBusClient>();
+            services.AddGrpc();
             services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
 
             // services.AddGrpc();
@@ -53,14 +55,15 @@ namespace PlatformService
         {
             // if (env.IsDevelopment())
             // {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger(c=> {
-                });
-                app.UseSwaggerUI(c =>
-                {
-                    // c.RoutePrefix = "swagger/platform";
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1");
-                });
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger(c =>
+            {
+            });
+            app.UseSwaggerUI(c =>
+            {
+                // c.RoutePrefix = "swagger/platform";
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1");
+            });
             // }
 
             //app.UseHttpsRedirection();
@@ -71,6 +74,13 @@ namespace PlatformService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                // Configure Grpc Routes
+                endpoints.MapGrpcService<GrpcPlatformService>();
+
+                endpoints.MapGet("/proto/platforms.proto", async context =>
+                {
+                    await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
+                });
             });
 
             // app.UseEndpoints(endpoints =>
