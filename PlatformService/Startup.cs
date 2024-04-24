@@ -3,7 +3,7 @@ using Microsoft.OpenApi.Models;
 using PlatformService.DATA;
 using PlatformService.DataServiceAsync;
 using PlatformService.DataServiceSyncs.Http;
-using PlatformService.SyncDataServices.Grpc;
+using PlatformService.DataServiceAsync.Grpc;
 
 namespace PlatformService
 {

@@ -2,7 +2,7 @@ using AutoMapper;
 using Grpc.Core;
 using PlatformService.DATA;
 
-namespace PlatformService.SyncDataServices.Grpc
+namespace PlatformService.DataServiceAsync.Grpc
 {
   public class GrpcPlatformService: GrpcPlatform.GrpcPlatformBase
   {
