@@ -52,7 +52,7 @@ kubectl get services
 
 ```
 
-### LOCAL HOST ROUTES
+### LOCAL HOST ROUTES (Exter Comm)
 #### PLATFORM SERVICE
 [GET SWAGGER](http://localhost:5001/swagger/index.html)
 [GET PLATFORM](http://localhost:5001/api/platform)
@@ -61,11 +61,16 @@ kubectl get services
 [GET SWAGGER](http://localhost:6001/swagger/index.html)
 [GET PLATFORMS](http://localhost:6001/api/c/platforms)
 
-### NODE PORT ROUTES
+### NODE PORT ROUTES (Inter Comm)
 #### PLATFORM SERVICE
 [GET PLATFORM](http://localhost:31971/api/platform)
 [POST PLATFORM](http://localhost:31971/api/platform)
 [GET SWAGGER](http://localhost:31971/swagger/index.html)
+
+### CLUSTER IP ROUTES (Inter Comm)
+#### PLATFORM SERVICE
+- WORKS FOR INTER SERVICE COMMUNICATION
+[GET PLATFORM](http://srv-clusterip-platforms:8080/api/platforms) 
 
 #### COMMAND SERVICE
 [GET PLATFORMS](http://localhost:31971/api/c/platforms)
@@ -73,7 +78,7 @@ kubectl get services
 [GET PLATFORMS/10/COMMANDS](https://localhost:31971/api/c/platforms/10/commands)
 [GET PLATFORMS/10/COMMANDS/7](https://localhost:31971/api/c/platforms/10/commands/7)
 
-### DNS ROUTES
+### DNS ROUTES (Exter Comm)
 #### PLATFORM SERVICE
 [GET PLATFORM](http://ahsan.host.com/api/platform)
 [POST PLATFORM](http://ahsan.host.com/api/platform?)

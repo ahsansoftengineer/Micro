@@ -191,8 +191,28 @@ kubectl get pods ingress-nginx-controller-7dcdbcff84-6dr2r --namespace=ingress-n
 # 3 SSH Container Inside Pod & NameSpace
 kubectl exec -it -n <NAMESPACE> <POD_NAME> --container <CONTAINER_NAME> -- /bin/bash # Example
 kubectl exec -it -n ingress-nginx ingress-nginx-controller-7dcdbcff84-6dr2r --container controller -- /bin/bash # Tested
-
-
-
 ```
 
+### GRPC
+- Platform depl-platforms.yaml
+```yml
+  - name: platformgrpc
+    protocol: TCP
+    port: 666
+    targetPort: 666
+```
+- Platform appsettings.Production.json
+```json
+  "Kestrel": {
+    "Endpoints": {
+      "Grpc": {
+        "Protocols": "Http2",
+        "Url": "http://srv-clusterip-platforms:666"
+      },
+      "webApi":{
+        "Protocols": "Http1",
+        "Url": "http://srv-clusterip-platforms:8080"
+      }
+    }
+  }
+```
