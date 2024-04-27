@@ -9,11 +9,17 @@ sudo snap install kubectl --classic
 kubectl version
 
 # Other Commands
+"--PODS--"
 kubectl get pods
+"--DEPLOYMENTS--"
 kubectl get deployments
+"--SERVICES--"
 kubectl get services
+"--NAMESPACE--"
 kubectl get namespace
+"--STORAGE_CLASS--"
 kubectl get storageclass
+"--PERSISTENT VOLUME CLAIMS--"
 kubectl get pvc
 
 # HARD RESTART DEPLOYMENTS
