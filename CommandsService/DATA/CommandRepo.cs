@@ -47,7 +47,7 @@ namespace CommandsService.DATA
     public Command? GetCommand(int platformId, int commandId)
     {
       return  _cntxt.Commands
-      .Where(c => c.PlatformId == platformId)
+      .Where(c => c.PlatformId == platformId && c.Id == commandId)
       .FirstOrDefault();
     }
 

@@ -38,6 +38,7 @@ docker push ahsansoftengineer/platformservice
 kubectl delete deployments depl-platforms
 kubectl apply -f depl-platforms.yaml
 kubectl rollout restart deployments depl-platforms
+# http://ahsan.host.c
 ```
 
 #### COMMAND SERVICE

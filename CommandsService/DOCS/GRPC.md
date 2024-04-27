@@ -1,7 +1,7 @@
 ### appsettings.json
 ```json
 # Production
-  "GrpcPlatform" : "http://platforms-clusterip-srv:666"
+  "GrpcPlatform" : "http://srv-clusterip-platforms:666"
 # Dev
   "GrpcPlatform": "https://localhost:5001"
 ```
