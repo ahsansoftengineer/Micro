@@ -5,7 +5,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 // using RabbitMQ.Client.Events;
 
-namespace CommandsService.AsyncDataServices
+namespace CommandsService.DataServicesAsync
 {
   public class MessageBusSubscriber : BackgroundService
   {

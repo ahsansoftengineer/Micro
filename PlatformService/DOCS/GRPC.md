@@ -32,7 +32,7 @@
   <PrivateAssets>all</PrivateAssets>
 </PackageReference>
 ```
-- Create Seperate Item Group for Generting Files
+- Create Seperate Item Group for Generting Files for Server
 ```xml
 <ItemGroup>
     <Protobuf Include="Protos\platforms.proto" GrpcServices="Server" />
