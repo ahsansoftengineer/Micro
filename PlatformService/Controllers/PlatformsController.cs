@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PlatformService.DATA;
 using PlatformService.DTO;
 using PlatformService.MODELS;
-using PlatformService.DataServiceSyncs.Http;
+using PlatformService.DataServiceSync.Http;
 using PlatformService.DataServiceAsync;
 
 namespace PlatformService.Controllers

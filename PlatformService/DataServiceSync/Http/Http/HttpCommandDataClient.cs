@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using PlatformService.DTO;
 
-namespace PlatformService.DataServiceSyncs.Http
+namespace PlatformService.DataServiceSync.Http
 {
   public class HttpCommandDataClient : ICommandDataClient
   {

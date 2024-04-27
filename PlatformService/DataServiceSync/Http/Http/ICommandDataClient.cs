@@ -1,7 +1,7 @@
 
 using PlatformService.DTO;
 
-namespace PlatformService.DataServiceSyncs.Http 
+namespace PlatformService.DataServiceSync.Http 
 {
   public interface ICommandDataClient 
   {

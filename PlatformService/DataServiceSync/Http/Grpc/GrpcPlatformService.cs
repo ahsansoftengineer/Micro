@@ -4,6 +4,7 @@ using PlatformService.DATA;
 
 namespace PlatformService.DataServiceAsync.Grpc
 {
+  // GRPC SERVER
   public class GrpcPlatformService: GrpcPlatform.GrpcPlatformBase
   {
     private readonly IPlatformRepo _repo;
