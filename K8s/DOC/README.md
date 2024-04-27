@@ -17,7 +17,9 @@ kubectl get storageclass
 kubectl get pvc
 
 # HARD RESTART DEPLOYMENTS
-kubectl rollout restart deployments name-depl
+kubectl rollout restart deployments # Restart all deployments
+kubectl rollout restart deployments name-depl # Restart 1 Deployments
+kubectl rollout restart deployments name-depl1 name-depl2
 ```
 #### POINTS
 - Cluster IPs using for Interservice comm
