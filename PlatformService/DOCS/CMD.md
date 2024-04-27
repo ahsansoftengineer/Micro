@@ -36,8 +36,8 @@ docker push ahsansoftnegineer/platformservice
 ```
 ### RUNNING PROJECT
 ```bash
-dotnet run
-# http://localhost:5001/swagger/index.html
+dotnet run --launch-profile https
+# https://localhost:5001/swagger/index.html
 # http://localhost:5001/api/platform
 ```
 

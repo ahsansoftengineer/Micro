@@ -14,16 +14,16 @@ namespace CommandsService.DataServicesSync.Grpc
     {
       _config = config;
       _map = map;
-
     }
 
     public IEnumerable<Platform> ReturnAllPlatforms()
     {
       Console.WriteLine($"--> Calling GRPC Service {_config["GrpcPlatform"]}");
       var channel = GrpcChannel.ForAddress(_config["GrpcPlatform"]);
-      var client = new GrpcPlatform.GrpcPlatformClient(channel);
-      var req = new GetAllRequest();
 
+      var client = new GrpcPlatform.GrpcPlatformClient(channel);
+
+      var req = new GetAllRequest();
       try
       {
         var reply = client.GetAllPlatforms(req);
@@ -31,10 +31,9 @@ namespace CommandsService.DataServicesSync.Grpc
       }
       catch (Exception ex)
       {
-        Console.WriteLine($"--> Could not call GRPC Server {ex.Message}");
+        Console.WriteLine($"--> Could not call GRPC Server {ex.StackTrace}");
+        return null;
       }
-      
-      throw new NotImplementedException();
     }
   }
 }
