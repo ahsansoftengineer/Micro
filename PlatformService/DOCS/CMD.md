@@ -44,6 +44,7 @@ dotnet run --launch-profile https
 ### MIGRATIONS
 ```bash
 dotnet add package Microsoft.EntityFrameworkCore.Design
+
 dotnet tool list -g
 dotnet tool install --global dotnet-ef
 export PATH="$PATH:$HOME/.dotnet/tools"
@@ -81,4 +82,9 @@ kubectl rollout restart deployments depl-platforms
 ```bash
 
 
+```
+
+### GRPC
+```bash
+dotnet add package Grpc.AspNetCore
 ```
