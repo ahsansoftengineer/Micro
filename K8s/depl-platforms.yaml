@@ -1,0 +1,49 @@
+# DEPLOYMENTS
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: depl-platforms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platformservice
+  template:
+    metadata:
+      labels:
+        app: platformservice
+    spec:
+      containers:
+      - name: platformservice
+        image: ahsansoftengineer/platformservice:latest
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
+
+---
+# CLUSTER IP FOR PLATFORM SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv-clusterip-platforms
+spec:
+  type: ClusterIP
+  selector:
+    app: platformservice
+  ports:
+  - name: platformservice
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  # GRPC Port
+  - name: platformgrpc
+    protocol: TCP
+    port: 666
+    targetPort: 666
+
+
+

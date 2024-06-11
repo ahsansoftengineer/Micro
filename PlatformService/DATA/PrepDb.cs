@@ -1,18 +1,31 @@
+using Microsoft.EntityFrameworkCore;
 using PlatformService.MODELS;
 
 namespace PlatformService.DATA 
 {
   public static class PrepDb 
   {
-    public static void PrepPopulation(IApplicationBuilder app) 
+    public static void PrepPopulation(IApplicationBuilder app, bool isProd) 
     {
-      using(var serviceScope = app.ApplicationServices.CreateScope()){
-        SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>());
+      using(var serviceScope = app.ApplicationServices.CreateScope())
+      {
+        SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>(), isProd);
       }
     }
 
-    private static void SeedData(AppDbContext context) {
-      if(!context.Platforms.Any()){
+    private static void SeedData(AppDbContext? context, bool isProd) {
+      if(isProd)
+      {
+        Console.WriteLine("--> Attempting to apply Migrations...");
+        try {
+          if(context != null){
+            context.Database.Migrate();
+          }
+        } catch(Exception ex) {
+          Console.WriteLine(ex.Message);
+        }
+      }
+      if(context != null && !context.Platforms.Any()){
         Console.WriteLine("--> Seeding Data");
 
         context.Platforms.AddRange(
@@ -32,6 +45,7 @@ namespace PlatformService.DATA
             Cost="Paid"
           }
         );
+        context.SaveChanges();
 
       } else {
         Console.WriteLine("--> We already have data");

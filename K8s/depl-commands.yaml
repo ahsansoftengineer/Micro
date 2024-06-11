@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: depl-commands
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: commandservice
+  template:
+    metadata:
+      labels:
+        app: commandservice
+    spec:
+      containers:
+      - name: commandservice
+        image: ahsansoftengineer/commandservice:latest
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
+---
+# CLUSTER IP FOR COMMAND SERVICE
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv-clusterip-commands
+spec:
+  type: ClusterIP
+  selector:
+    app: commandservice
+  ports:
+  - name: commandservice
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  # - name: plafromgrpc
+  #   protocol: TCP
+  #   port: 666
+  #   targetPort: 666
+
+
+
