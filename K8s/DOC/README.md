@@ -87,6 +87,7 @@ kubectl get pvc
 - Database with load Balancer
 ```bash
 kubectl apply -f depl-mssql-plat.yaml
+kubectl delete deployments depl-mssql-plat
 kubectl get deployments
 kubectl get services
 ```
@@ -118,6 +119,8 @@ kubectl apply -f srv-ingress.yaml
 #### MSG BRKR RABBIT MQ
 ```bash
 kubectl apply -f depl-rabbitmq.yaml
+kubectl delete deployments depl-rabbitmq
+
 # http://localhost:15672/
 # http://ahsan.host.com:15672/#/exchanges
 # username: guest
