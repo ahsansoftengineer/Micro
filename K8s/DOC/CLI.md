@@ -9,7 +9,7 @@ dotnet new angular
 - 
 ### Dot Net Use Full Command
 ```bash
-dotnet
+dotnet--
 dotnet build
 dotnet build-server
 dotnet clean
