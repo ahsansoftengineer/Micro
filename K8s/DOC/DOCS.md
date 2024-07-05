@@ -1,6 +1,6 @@
 ### MICROSERVICES
 
-#### SRP (Single Reponsibility Prin)
+#### SRP (Single Responsibility Prin)
 - Gather together those things that change for the same reason, and separate those things that change for different reasons."
 - If one of the service goes down the other will work
 
@@ -8,7 +8,7 @@
 #### Microservices
 - Small (2 Pizza team, 2 Weeks to build)
 - Responsible for doing 1 thing well
-- Organisationally alligned
+- Organizationally aligned
 - Form Part of the (distributed) whole
 - Self-Contained / Autonomous
 
@@ -25,15 +25,15 @@
 - - Massive amounts of (frequently manual) testing
 - Difficult to Scale
 - Locked in
-- - Technolgy terms
+- - Technology terms
 - - Intellectual property terms (an external party held the cards)
 
 #### Benefits of Microservices
 - Easier to change & deploy (small and decoupled)
 - Can be built using different technologies
-- Increated Organisational ownership and alignment (Outsourcing some of the project)
+- Increased Organizational ownership and alignment (Outsourcing some of the project)
 - Resilient: 1 Service can break the, others will continue to run
-- Scalable: you can scale out only the servicies you need to
+- Scalable: you can scale out only the services you need to
 - Built to be highly replaceable / swappable
 
 
