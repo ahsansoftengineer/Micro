@@ -13,10 +13,16 @@ dotnet add package RabbitMQ.Client
 ![Screenshot](./IMG/1.png)
 
 #### DOCKER SQL
-- Connection String
+- Connection String (Local Development)
 ```json
 "ConnectionStrings": {
     "PlatformConn" : "Server=localhost,1433;Initial Catalog=platformsdb;User ID=sa;Password=Pa55w@rd;TrustServerCertificate=true"
+  },
+```
+- Connection String  (Docker Production)
+```json
+  "ConnectionStrings": {
+    "PlatformConn": "Server=localhost,1433;Initial Catalog=platformsdb;User ID=sa;Password=Pa55w@rd;TrustServerCertificate=true",
   },
 ```
 - Not Having SQL Server Installed in PC
