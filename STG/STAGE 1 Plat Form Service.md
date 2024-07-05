@@ -26,7 +26,21 @@ docker image ls
 docker run -e 'HOMEBREW_NO_ENV_FILTERING=1' -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Pa55w@rd' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 docker container ls
 docker ps
-dotnet ef database update --connection "SERVER=127.0.0.1,1433;DATABASE=Donation;USER=sa;PASSWORD=Pa55w@rd;Encrypt=false"
+```
+- Migration
+```bash
+
+# dotnet ef database add MigrationName --project Donation.Infrastructure --startup-project Donation.Api --connection "SERVER=127.0.0.1,1433;DATABASE=Donation;USER=sa;PASSWORD=Pa55w@rd;Encrypt=false"
+
+# ADD
+dotnet ef migrations add init
+# UPDATE
+dotnet ef database update --connection "SERVER=.;DATABASE=platformsdb;USER=sa;PASSWORD=Pa55w@rd;Encrypt=false"
+# REMOVE
+dotnet ef migrations remove
+
+# RUN
+dotnet run --project Donation.Api
 ```
 #### Setting up Entity
 1. Model
@@ -208,7 +222,7 @@ namespace PlatformService.Profiles
 ```c#
 public void ConfigureServices(IServiceCollection services)
 {
-  if (_env.IsProduction())
+  if (_env.IsProduction() || true)
   {
     Console.WriteLine("--> Using SQL DB");
     services.AddDbContext<AppDbContext>(opt =>

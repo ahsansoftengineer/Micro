@@ -21,7 +21,7 @@ namespace PlatformService
 
     public void ConfigureServices(IServiceCollection services)
     {
-      if (_env.IsProduction())
+      if (_env.IsProduction() || true)
       {
         Console.WriteLine("--> Using SQL DB");
         services.AddDbContext<AppDbContext>(opt =>
