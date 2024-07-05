@@ -35,9 +35,9 @@ namespace PlatformService
       }
 
       services.AddScoped<IPlatformRepo, PlatformRepo>();
-      services.AddSingleton<IMessageBusClient, MessageBusClient>();
-      services.AddGrpc();
-      services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+      // services.AddSingleton<IMessageBusClient, MessageBusClient>();
+      // services.AddGrpc();
+      // services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
 
       // services.AddGrpc();
       services.AddControllers();
@@ -53,18 +53,18 @@ namespace PlatformService
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-      // if (env.IsDevelopment())
-      // {
-      app.UseDeveloperExceptionPage();
-      app.UseSwagger(c =>
+      if (env.IsDevelopment())
       {
-      });
-      app.UseSwaggerUI(c =>
-      {
-        // c.RoutePrefix = "swagger/platform";
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1");
-      });
-      // }
+        app.UseDeveloperExceptionPage();
+        app.UseSwagger(c =>
+        {
+        });
+        app.UseSwaggerUI(c =>
+        {
+          // c.RoutePrefix = "swagger/platform";
+          c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlatformService v1");
+        });
+      }
 
       //app.UseHttpsRedirection();
 
@@ -75,24 +75,24 @@ namespace PlatformService
       {
         endpoints.MapControllers();
         // Configure Grpc Routes
-        endpoints.MapGrpcService<GrpcPlatformService>();
+        // endpoints.MapGrpcService<GrpcPlatformService>();
 
-        endpoints.MapGet("/proto/platforms.proto", async context =>
-        {
-          await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
-        });
+        // endpoints.MapGet("/proto/platforms.proto", async context =>
+        // {
+        //   await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
+        // });
       });
 
-      // app.UseEndpoints(endpoints =>
-      // {
-      //   endpoints.MapControllers();
-      //   endpoints.MapGrpcService<GrpcPlatformService>();
+      app.UseEndpoints(endpoints =>
+      {
+        endpoints.MapControllers();
+        // endpoints.MapGrpcService<GrpcPlatformService>();
 
-      //   endpoints.MapGet("/protos/platforms.proto", async context =>
-      //   {
-      //     await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
-      //   });
-      // });
+        // endpoints.MapGet("/protos/platforms.proto", async context =>
+        // {
+        //   await context.Response.WriteAsync(File.ReadAllText("Protos/platforms.proto"));
+        // });
+      });
       PrepDb.PrepPopulation(app, env.IsProduction());
     }
   }

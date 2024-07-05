@@ -12,6 +12,22 @@ dotnet add package RabbitMQ.Client
 ```
 ![Screenshot](./IMG/1.png)
 
+#### DOCKER SQL
+- Connection String
+```json
+"ConnectionStrings": {
+    "PlatformConn" : "Server=localhost,1433;Initial Catalog=platformsdb;User ID=sa;Password=Pa55w@rd;TrustServerCertificate=true"
+  },
+```
+- Not Having SQL Server Installed in PC
+```bash
+docker pull mcr.microsoft.com/mssql/server:2022-latest
+docker image ls
+docker run -e 'HOMEBREW_NO_ENV_FILTERING=1' -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Pa55w@rd' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+docker container ls
+docker ps
+dotnet ef database update --connection "SERVER=127.0.0.1,1433;DATABASE=Donation;USER=sa;PASSWORD=Pa55w@rd;Encrypt=false"
+```
 #### Setting up Entity
 1. Model
 ```c#
