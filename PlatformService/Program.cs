@@ -11,6 +11,7 @@ namespace PlatformService
       Host.CreateDefaultBuilder(args)
         .ConfigureWebHostDefaults(webBuilder =>
         {
+          // webBuilder.UseUrls("http://0.0.0.0:8080");
           webBuilder.UseStartup<Startup>();
         });
   }
